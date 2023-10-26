@@ -1,0 +1,69 @@
+.ticket-list {
+	display: flex;
+	flex-direction: column;
+
+	width: 100%;
+	min-height: 500px;
+	padding: 0 20px;
+
+
+}
+
+.ticket-list__load-more-btn {
+	width: 100%;
+	height: 30px;
+
+	color: white;
+	font-size: 20px;
+	background-color: rgb(39, 95, 154);
+
+	border: none;
+}
+
+.ticket-list__load-more-btn:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+
+.ticket-list__error-of-search {
+	width: 100%;
+	height: max-content;
+
+	text-align: center;
+
+	color: #2d2d2d;
+}
+
+.ticket-list__error-title {
+	margin: 0 0 10px 0;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 44px;
+	line-height: 141.69%;
+}
+
+
+.ticket-list__error-subtitle {
+	margin: 0 0 40px 0;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 17px;
+	line-height: 142.19%;
+}
+
+.ticket-list__error-button-reset {
+	margin: 0 0 40px 0;
+	border: none;
+	background: #FCB427;
+
+	font-size: 20px;
+
+	width: 250px;
+	height: 50px;
+}
+
+.ticket-list__error-button-reset:hover {
+	cursor: pointer;
+	background: #FF971D;
+}

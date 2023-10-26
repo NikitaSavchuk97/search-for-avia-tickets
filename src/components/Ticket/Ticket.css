@@ -1,0 +1,142 @@
+.ticket {
+	width: 100%;
+	height: max-content;
+	margin: 0 0 50px 0;
+}
+
+.ticker__header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+
+	color: white;
+
+	height: 50px;
+
+	background-color: rgb(39, 95, 154);
+}
+
+.ticket__company-title {
+	margin: 0 0 0 10px;
+}
+
+.ticket__price {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+
+	margin: 0 10px 0 0;
+}
+
+.ticker__price-value {
+	line-height: 32px;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+.ticker__price-span {
+	line-height: 10px;
+	font-size: 10px;
+	font-weight: 200;
+}
+
+.ticket__departure {
+	display: flex;
+	flex-direction: row;
+
+	align-items: center;
+	justify-content: space-between;
+
+	border-bottom: 1px solid lightgray;
+
+	height: 50px;
+}
+
+.ticket__departure-wrapper {
+	font-size: 20px;
+}
+
+.ticket__departure-item {
+	margin: auto 10px;
+}
+
+.ticket__blue-span {
+	color: rgb(50, 90, 251)
+}
+
+.ticket__timings-info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	border-bottom: 1px solid lightgray;
+	position: relative;
+}
+
+.ticket__time {
+	margin: 0 10px;
+	font-size: 30px;
+	font-weight: 400;
+}
+
+.ticket__date {
+	display: flex;
+	align-items: flex-end;
+
+	margin: auto auto 4px 0;
+
+	font-size: 20px;
+	font-weight: 400;
+	color: rgb(50, 90, 251)
+}
+
+.ticket__date:nth-child(5) {
+	display: flex;
+	align-items: flex-end;
+
+	margin: auto 0 4px auto;
+
+	font-size: 20px;
+	font-weight: 400;
+	color: rgb(50, 90, 251)
+}
+
+.ticket__value-of-travels-hidden {
+	position: absolute;
+	top: 29px;
+	left: 42.5%;
+
+	color: orange;
+
+	width: 120px;
+
+	text-align: center;
+
+	background-color: white;
+	visibility: hidden;
+}
+
+.ticket__value-of-travels-visible {
+	visibility: visible;
+}
+
+.ticket__company-subtitle {
+	font-size: 15px;
+	font-weight: 400;
+	margin: 10px auto 3px 10px;
+}
+
+.ticket__line {
+	width: 100%;
+	height: 2px;
+	background-color: rgb(39, 95, 154);
+}
+
+.ticket__take-button {
+	width: 100%;
+	height: 40px;
+
+	background-color: orange;
+	border: none;
+}

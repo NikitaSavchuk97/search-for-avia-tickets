@@ -1,0 +1,25 @@
+.wrapper {
+	display: flex;
+	justify-content: center;
+
+	background-color: rgb(168, 208, 247);
+
+	width: 100vw;
+	height: max-content;
+}
+
+.content {
+	display: flex;
+	flex-direction: row;
+
+	justify-content: space-between;
+
+	border-radius: 20px;
+
+	width: 1080px;
+
+	padding: 20px;
+	margin: 50px 0;
+
+	background-color: white;
+}
