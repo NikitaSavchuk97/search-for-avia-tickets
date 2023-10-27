@@ -13,6 +13,7 @@ function App() {
 	const [lowerPrice, setLowerPrice] = useState(false)
 	const [travelTime, setTravelTime] = useState(false)
 	const [withoutTransfer, setWithoutTransfer] = useState(false)
+	const [preloader, setPreloader] = useState(true)
 	const [oneTransfer, setOneTransfer] = useState(false)
 	const [price, setPrice] = useState({ minPrice: 0, maxPrice: 200000 })
 	const [length, setLength] = useState(0)
@@ -59,7 +60,10 @@ function App() {
 	}
 
 	useEffect(() => {
-		setTickets(mainFilter().slice(0, 2))
+		setPreloader(true)
+		setTimeout(() => {
+			setTickets(mainFilter().slice(0, 2))
+		}, 500)
 		setLength(mainFilter().length)
 	}, [highterPrice, lowerPrice, travelTime, withoutTransfer, oneTransfer, price, companys])
 
@@ -149,6 +153,8 @@ function App() {
 					handleResetFiltres={handleResetFiltres}
 					tickets={tickets}
 					length={length}
+					preloader={preloader}
+					setPreloader={setPreloader}
 				/>
 			</div>
 		</div >

@@ -24,7 +24,7 @@ function Ticket(props) {
 	}
 
 	return (
-		<section className='ticket' key={props.flightToken}>
+		<section className='ticket'>
 
 			<div className='ticker__header'>
 				<h2 className='ticket__company-title'>{props.flightCarrierCaption}</h2>
@@ -38,7 +38,7 @@ function Ticket(props) {
 				<div className='ticket__departure-wrapper'>
 					<span className='ticket__departure-item'>
 						{`${props.depCaption}`}
-						<span className='ticket__blue-span'>{`(${props.depUid})`}</span>
+						<span className='ticket__blue-span'>{` (${props.depUid})`}</span>
 					</span>
 				</div>
 				<span>&rArr;</span>
