@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/search-for-avia-tickets/static/css/main.fe0b4c5b.css",
-    "main.js": "/search-for-avia-tickets/static/js/main.581c41e6.js",
+    "main.css": "/search-for-avia-tickets/static/css/main.9473f144.css",
+    "main.js": "/search-for-avia-tickets/static/js/main.c829cf25.js",
     "index.html": "/search-for-avia-tickets/index.html",
-    "main.fe0b4c5b.css.map": "/search-for-avia-tickets/static/css/main.fe0b4c5b.css.map",
-    "main.581c41e6.js.map": "/search-for-avia-tickets/static/js/main.581c41e6.js.map"
+    "main.9473f144.css.map": "/search-for-avia-tickets/static/css/main.9473f144.css.map",
+    "main.c829cf25.js.map": "/search-for-avia-tickets/static/js/main.c829cf25.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe0b4c5b.css",
-    "static/js/main.581c41e6.js"
+    "static/css/main.9473f144.css",
+    "static/js/main.c829cf25.js"
   ]
 }
