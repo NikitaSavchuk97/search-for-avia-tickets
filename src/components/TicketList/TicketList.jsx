@@ -60,7 +60,7 @@ function Tickets(props) {
 					)
 			}
 			{
-				tickets.length === 0
+				tickets.length === 0 || tickets.length === props.length
 					? ""
 					: (
 						<button button className={`ticket-list__load-more-btn`} onClick={props.handleMoreTickets} type="button" >

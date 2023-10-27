@@ -15,6 +15,7 @@ function App() {
 	const [withoutTransfer, setWithoutTransfer] = useState(false)
 	const [oneTransfer, setOneTransfer] = useState(false)
 	const [price, setPrice] = useState({ minPrice: 0, maxPrice: 200000 })
+	const [length, setLength] = useState(0)
 
 
 	const mainFilter = () => {
@@ -59,6 +60,8 @@ function App() {
 
 	useEffect(() => {
 		setTickets(mainFilter().slice(0, 2))
+		setLength(mainFilter().length)
+		console.log(mainFilter().length)
 	}, [highterPrice, lowerPrice, travelTime, withoutTransfer, oneTransfer, price, companys])
 
 	const handleMoreTickets = () => {
@@ -146,6 +149,7 @@ function App() {
 					handleMoreTickets={handleMoreTickets}
 					handleResetFiltres={handleResetFiltres}
 					tickets={tickets}
+					length={length}
 				/>
 			</div>
 		</div >
