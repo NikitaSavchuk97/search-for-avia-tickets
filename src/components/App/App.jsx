@@ -1,6 +1,6 @@
 import './App.css';
 import Filtres from '../Filtres/Filtres'
-import TicketsList from '../Tickets/TicketList';
+import TicketsList from '../TicketList/TicketList';
 import { useEffect, useState } from 'react';
 import ticketsData from '../../data/flights.json'
 

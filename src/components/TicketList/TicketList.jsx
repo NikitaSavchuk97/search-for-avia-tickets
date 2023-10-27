@@ -21,7 +21,7 @@ function Tickets(props) {
 							</h2>
 
 							<p className='ticket-list__error-subtitle'>
-								попробуйте смягчить условия поиска или поискать в другой категории
+								попробуйте смягчить условия поиска
 							</p>
 
 							<button className='ticket-list__error-button-reset' onClick={props.handleResetFiltres}>
