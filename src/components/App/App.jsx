@@ -61,7 +61,6 @@ function App() {
 	useEffect(() => {
 		setTickets(mainFilter().slice(0, 2))
 		setLength(mainFilter().length)
-		console.log(mainFilter().length)
 	}, [highterPrice, lowerPrice, travelTime, withoutTransfer, oneTransfer, price, companys])
 
 	const handleMoreTickets = () => {
