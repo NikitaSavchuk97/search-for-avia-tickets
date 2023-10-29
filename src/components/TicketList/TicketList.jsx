@@ -52,8 +52,8 @@ function Tickets(props) {
 												<Ticket
 													key={ticket.info.flightToken}
 													flightCarrierCaption={ticket.info.caption}
-
 													ticketPassPrice={ticket.info.price}
+
 													depCaption={ticket.to.departureAirportCaptionTo}
 													depUid={ticket.to.departureAirportUidTo}
 													arrivCaption={ticket.to.arrivalAirportCaptionTo}

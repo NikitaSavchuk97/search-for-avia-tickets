@@ -18,8 +18,8 @@ function App() {
 		const travelDurationTo = item.flight.legs[0].segments.length > 1 ? item.flight.legs[0].segments[0].travelDuration + item.flight.legs[0].segments[1].travelDuration : item.flight.legs[0].segments[0].travelDuration
 		const arrivalDateTo = item.flight.legs[0].segments.length > 1 ? item.flight.legs[0].segments[1].arrivalDate : item.flight.legs[0].segments[0].arrivalDate
 		const arrivalCityTo = item.flight.legs[0].segments.length > 1 ? item.flight.legs[0].segments[1].arrivalDate : item.flight.legs[0].segments[0].arrivalDate
-		const arrivalAirportCaptionTo = item.flight.legs[0].segments.length > 1 ? item.flight.legs[0].segments[1].departureAirport.caption : item.flight.legs[0].segments[0].departureAirport.caption
-		const arrivalAirportUidTo = item.flight.legs[0].segments.length > 1 ? item.flight.legs[0].segments[1].departureAirport.uid : item.flight.legs[0].segments[0].departureAirport.uid
+		const arrivalAirportCaptionTo = item.flight.legs[0].segments.length > 1 ? item.flight.legs[0].segments[1].arrivalAirport.caption : item.flight.legs[0].segments[0].arrivalAirport.caption
+		const arrivalAirportUidTo = item.flight.legs[0].segments.length > 1 ? item.flight.legs[0].segments[1].arrivalAirport.uid : item.flight.legs[0].segments[0].arrivalAirport.uid
 		const travelJumpsTo = item.flight.legs[0].segments.length
 		//---FROM---//
 		const departureDateFrom = item.flight.legs[1].segments[0].departureDate
