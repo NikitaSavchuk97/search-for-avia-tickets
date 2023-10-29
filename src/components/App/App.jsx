@@ -95,7 +95,6 @@ function App() {
 	const [price, setPrice] = useState({ minPrice: 0, maxPrice: 200000 })
 	const [length, setLength] = useState(0)
 
-
 	const mainFilter = () => {
 		const mainTicketsArray = flights
 		const lowerToHight = highterPrice ? mainTicketsArray.sort((a, b) =>
