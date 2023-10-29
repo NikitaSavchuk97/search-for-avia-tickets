@@ -5,8 +5,85 @@ import { useEffect, useState } from 'react';
 import ticketsData from '../../data/flights.json'
 
 function App() {
-	const flights = ticketsData.result.flights
-	const airlineCompanys = flights.map((f) => f.flight.carrier.caption).filter((item, index, array) => array.findIndex(arrayItem => (arrayItem === item)) === index)
+
+	const flights = ticketsData.result.flights.map(item => {
+		//---INFO---//
+		const flightToken = item.flightToken
+		const caption = item.flight.carrier.caption
+		const price = item.flight.price.passengerPrices[0].singlePassengerTotal.amount
+		//---TO---//
+		const departureDateTo = item.flight.legs[0].segments[0].departureDate
+		const departureAirportCaptionTo = item.flight.legs[0].segments[0].departureAirport.caption
+		const departureAirportUidTo = item.flight.legs[0].segments[0].departureAirport.uid
+		const travelDurationTo = item.flight.legs[0].segments.length > 1
+			? item.flight.legs[0].segments[0].travelDuration + item.flight.legs[0].segments[1].travelDuration
+			: item.flight.legs[0].segments[0].travelDuration
+		const arrivalDateTo = item.flight.legs[0].segments.length > 1
+			? item.flight.legs[0].segments[1].arrivalDate
+			: item.flight.legs[0].segments[0].arrivalDate
+		const arrivalCityTo = item.flight.legs[0].segments.length > 1
+			? item.flight.legs[0].segments[1].arrivalDate
+			: item.flight.legs[0].segments[0].arrivalDate
+		const arrivalAirportCaptionTo = item.flight.legs[0].segments.length > 1
+			? item.flight.legs[0].segments[1].departureAirport.caption
+			: item.flight.legs[0].segments[0].departureAirport.caption
+		const arrivalAirportUidTo = item.flight.legs[0].segments.length > 1
+			? item.flight.legs[0].segments[1].departureAirport.uid
+			: item.flight.legs[0].segments[0].departureAirport.uid
+		const travelJumpsTo = item.flight.legs[0].segments.length
+		//---FROM---//
+		const departureDateFrom = item.flight.legs[1].segments[0].departureDate
+		const departureAirportCaptionFrom = item.flight.legs[1].segments[0].departureAirport.caption
+		const departureAirportUidFrom = item.flight.legs[1].segments[0].departureAirport.uid
+		const travelDurationFrom = item.flight.legs[1].segments.length > 1
+			? item.flight.legs[1].segments[0].travelDuration + item.flight.legs[1].segments[1].travelDuration
+			: item.flight.legs[1].segments[0].travelDuration
+		const arrivalDateFrom = item.flight.legs[1].segments.length > 1
+			? item.flight.legs[1].segments[1].arrivalDate
+			: item.flight.legs[1].segments[0].arrivalDate
+		const arrivalCityForm = item.flight.legs[1].segments.length > 1
+			? item.flight.legs[1].segments[1].arrivalDate
+			: item.flight.legs[1].segments[0].arrivalDate
+		const arrivalAirportCaptionFrom = item.flight.legs[1].segments.length > 1
+			? item.flight.legs[1].segments[1].arrivalAirport.caption
+			: item.flight.legs[1].segments[0].arrivalAirport.caption
+		const arrivalAirportUidFrom = item.flight.legs[1].segments.length > 1
+			? item.flight.legs[1].segments[1].arrivalAirport.uid
+			: item.flight.legs[1].segments[0].arrivalAirport.uid
+		const travelJumpsFrom = item.flight.legs[1].segments.length
+
+		return {
+			info: {
+				flightToken,
+				caption,
+				price
+			},
+			to: {
+				departureDateTo,
+				departureAirportCaptionTo,
+				departureAirportUidTo,
+				travelDurationTo,
+				arrivalDateTo,
+				arrivalCityTo,
+				arrivalAirportCaptionTo,
+				arrivalAirportUidTo,
+				travelJumpsTo
+			},
+			from: {
+				departureDateFrom,
+				departureAirportCaptionFrom,
+				departureAirportUidFrom,
+				travelDurationFrom,
+				arrivalDateFrom,
+				arrivalCityForm,
+				arrivalAirportCaptionFrom,
+				arrivalAirportUidFrom,
+				travelJumpsFrom
+			}
+		}
+	})
+
+	const airlineCompanys = flights.map((item) => item.info.caption).filter((item, index, array) => array.findIndex(arrayItem => (arrayItem === item)) === index)
 	const [companys, setCompanys] = useState([])
 	const [tickets, setTickets] = useState(flights)
 	const [highterPrice, setHighterPrice] = useState(true)
@@ -22,38 +99,31 @@ function App() {
 	const mainFilter = () => {
 		const mainTicketsArray = flights
 		const lowerToHight = highterPrice ? mainTicketsArray.sort((a, b) =>
-			a.flight.price.passengerPrices[0].singlePassengerTotal.amount - b.flight.price.passengerPrices[0].singlePassengerTotal.amount
+			a.info.price - b.info.price
 		) : mainTicketsArray;
 
 		const hightToLower = lowerPrice ? lowerToHight.sort((a, b) =>
-			b.flight.price.passengerPrices[0].singlePassengerTotal.amount - a.flight.price.passengerPrices[0].singlePassengerTotal.amount
+			b.info.price - a.info.price
 		) : lowerToHight;
 
-		const travelDurationLowTohight = travelTime ? hightToLower.sort(
-			(a, b) =>
-				((a.flight.legs[0].segments.length > 1 ? a.flight.legs[0].segments[0].travelDuration + a.flight.legs[0].segments[1].travelDuration : a.flight.legs[0].segments[0].travelDuration)
-					+
-					(a.flight.legs[1].segments.length > 1 ? a.flight.legs[1].segments[0].travelDuration + a.flight.legs[1].segments[1].travelDuration : a.flight.legs[1].segments[0].travelDuration))
-				-
-				((b.flight.legs[0].segments.length > 1 ? b.flight.legs[0].segments[0].travelDuration + b.flight.legs[0].segments[1].travelDuration : b.flight.legs[0].segments[0].travelDuration)
-					+
-					(b.flight.legs[1].segments.length > 1 ? b.flight.legs[1].segments[0].travelDuration + b.flight.legs[1].segments[1].travelDuration : b.flight.legs[1].segments[0].travelDuration))
+		const travelDurationLowToHight = travelTime ? hightToLower.sort(
+			(a, b) => (a.to.travelDurationTo + a.from.travelDurationFrom) - (b.to.travelDurationTo + b.from.travelDurationFrom)
 		) : hightToLower;
 
-		const ticketsWithoutTransfers = withoutTransfer ? travelDurationLowTohight.filter((ticket) =>
-			ticket.flight.legs[0].segments.length < 2 && ticket.flight.legs[1].segments.length < 2
-		) : travelDurationLowTohight
+		const ticketsWithoutTransfers = withoutTransfer ? travelDurationLowToHight.filter(ticket =>
+			ticket.to.travelJumpsTo + ticket.from.travelJumpsFrom === 2
+		) : travelDurationLowToHight
 
 		const ticketsWithOneTransfer = oneTransfer ? ticketsWithoutTransfers.filter((ticket) =>
-			ticket.flight.legs[0].segments.length < 2 || ticket.flight.legs[1].segments.length < 2
+			ticket.to.travelJumpsTo + ticket.from.travelJumpsFrom === 3
 		) : ticketsWithoutTransfers
 
 		const ticketsFilteredMinAndMaxPrice = price.minPrice > 0 || price.minPrice < 200000 ? ticketsWithOneTransfer.filter((ticket) =>
-			ticket.flight.price.passengerPrices[0].singlePassengerTotal.amount > price.minPrice && ticket.flight.price.passengerPrices[0].singlePassengerTotal.amount < price.maxPrice
+			ticket.info.price > price.minPrice && ticket.info.price < price.maxPrice
 		) : ticketsWithOneTransfer
 
 		const ticketsFilteredByCompany = airlineCompanys.some(e => companys.includes(e)) ? ticketsFilteredMinAndMaxPrice.filter((ticket) =>
-			companys.includes(ticket.flight.carrier.caption)
+			companys.includes(ticket.info.caption)
 		) : ticketsFilteredMinAndMaxPrice
 
 		return ticketsFilteredByCompany

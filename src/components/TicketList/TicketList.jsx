@@ -5,13 +5,13 @@ import Ticket from '../Ticket/Ticket'
 function Tickets(props) {
 	const [tickets, setTickets] = useState([])
 
-	function takeCheck() {
+	const preloader = () => {
 		props.setPreloader(false)
 	}
 
 	useEffect(() => {
 		setTickets(props.tickets)
-		takeCheck()
+		preloader()
 	}, [props.tickets])
 
 	return (
@@ -50,25 +50,27 @@ function Tickets(props) {
 										tickets.map((ticket) => {
 											return (
 												<Ticket
-													key={ticket.flightToken}
-													flightCarrierCaption={ticket.flight.carrier.caption}
-													ticketPassPrice={ticket.flight.price.passengerPrices[0].singlePassengerTotal.amount}
-													depCaption={ticket.flight.legs[0].segments[0].departureAirport.caption}
-													depUid={ticket.flight.legs[0].segments[0].departureAirport.uid}
-													arrivCaption={ticket.flight.legs[0].segments[`${ticket.flight.legs[0].segments.length > 1 ? 1 : 0}`].arrivalAirport.caption}
-													arrivUid={ticket.flight.legs[0].segments[`${ticket.flight.legs[0].segments.length > 1 ? 1 : 0}`].arrivalAirport.uid}
-													depDate={ticket.flight.legs[0].segments[0].departureDate}
-													travelDuration={ticket.flight.legs[0].segments.length > 1 ? ticket.flight.legs[0].segments[0].travelDuration + ticket.flight.legs[0].segments[1].travelDuration : ticket.flight.legs[0].segments[0].travelDuration}
-													travelJumps={ticket.flight.legs[0].segments.length}
-													arrivDate={ticket.flight.legs[0].segments[`${ticket.flight.legs[0].segments.length > 1 ? 1 : 0}`].arrivalDate}
-													backDepCaption={ticket.flight.legs[1].segments[0].departureAirport.caption}
-													backDepUid={ticket.flight.legs[1].segments[0].departureAirport.uid}
-													backArrivCaption={ticket.flight.legs[1].segments[`${ticket.flight.legs[1].segments.length > 1 ? 1 : 0}`].arrivalAirport.caption}
-													backArrivUid={ticket.flight.legs[1].segments[`${ticket.flight.legs[1].segments.length > 1 ? 1 : 0}`].arrivalAirport.uid}
-													backDepDate={ticket.flight.legs[1].segments[0].departureDate}
-													backTravelDuration={ticket.flight.legs[1].segments.length > 1 ? ticket.flight.legs[1].segments[0].travelDuration + ticket.flight.legs[1].segments[1].travelDuration : ticket.flight.legs[1].segments[0].travelDuration}
-													backTravelJumps={ticket.flight.legs[1].segments.length}
-													backArrivDate={ticket.flight.legs[1].segments[`${ticket.flight.legs[1].segments.length > 1 ? 1 : 0}`].arrivalDate}
+													key={ticket.info.flightToken}
+													flightCarrierCaption={ticket.info.caption}
+
+													ticketPassPrice={ticket.info.price}
+													depCaption={ticket.to.departureAirportCaptionTo}
+													depUid={ticket.to.departureAirportUidTo}
+													arrivCaption={ticket.to.arrivalAirportCaptionTo}
+													arrivUid={ticket.to.arrivalAirportUidTo}
+													depDate={ticket.to.departureDateTo}
+													travelDuration={ticket.to.travelDurationTo}
+													travelJumps={ticket.to.travelJumpsTo}
+													arrivDate={ticket.to.arrivalDateTo}
+
+													backDepCaption={ticket.from.departureAirportCaptionFrom}
+													backDepUid={ticket.from.departureAirportUidFrom}
+													backArrivCaption={ticket.from.arrivalAirportCaptionFrom}
+													backArrivUid={ticket.from.arrivalAirportUidFrom}
+													backDepDate={ticket.from.departureDateFrom}
+													backTravelDuration={ticket.from.travelDurationFrom}
+													backTravelJumps={ticket.from.travelJumpsFrom}
+													backArrivDate={ticket.from.arrivalDateFrom}
 												/>
 											)
 										})
