@@ -4,7 +4,7 @@
 [Адрес готового проекта](https://nikitasavchuk97.github.io/search-for-avia-tickets/)
 
 ## Стек:
-- HTML;
-- CSS;
-- React;
-- JavaScript;
+- HTML
+- CSS
+- React
+- JavaScript
